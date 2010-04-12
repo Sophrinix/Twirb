@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'bundler'
 require 'thread'
+require 'cgi'
 Bundler.setup
 
 require File.dirname(__FILE__) + '/lib/twirb/config.rb'

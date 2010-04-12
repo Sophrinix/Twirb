@@ -55,7 +55,7 @@ module Twirb
         named_scope :from, lambda { |name| { :conditions => { :from_user => name } } }
         named_scope :to_me, :conditions => { :to_user => Twirb.login }
         def code
-          (text.split("@#{Twirb.login}") * "").strip
+          CGI.unescapeHTML((text.split("@#{Twirb.login}") * "").strip)
         end
       end
     RUBY
