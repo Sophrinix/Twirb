@@ -10,13 +10,13 @@ module Twirb
   end
 
   def self.once(&block)
-    begin
-      Twirb.client.search(:to => Twirb.login, :rpp => 1000).each do |status|
-        block.call(Status.create(:twitter_id => status.id, :created_at => status.created_at, :from_user => status.from_user, :to_user => status.to_user, :text => status.text, :source => status.source))
+      Twirb.client.search(:to => Twirb.login, :rpp => 1000).reverse.each do |status|
+        begin
+          block.call(Status.create(:twitter_id => status.id, :created_at => status.created_at, :from_user => status.from_user, :to_user => status.to_user, :text => status.text, :source => status.source))
+        rescue ActiveRecord::StatementInvalid => e
+          # ingore it if the status exists already.
+        end
       end
-    rescue ActiveRecord::StatementInvalid => e
-      # ingore it if the status exists already.
-    end
   end
 
 end

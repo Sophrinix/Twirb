@@ -143,13 +143,13 @@ class Output
     when :line_continuation
         ".." * @indent_level
     when :error
-      @output + "\033[1;33m#{@error.class}: #{@error.message}"
+      @output + "#{@error.class}: #{@error.message}"
     when :illegal
-        "\033[1;33mYou aren't allowed to run that command!"
+        "You aren't allowed to run that command!"
     when :javascript
-        "\033[1;JSm#{@javascript}\033[m "
+        "#{@javascript} "
     else
-      @output + "=> \033[1;20m#{@result.inspect}"
+      @output + "=> #{@result.inspect}"
     end
   end
 

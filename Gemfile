@@ -1,2 +1,8 @@
 source "http://rubygems.org/"
 gem "twitter4r"
+gem "daemons"
+gem "activerecord"
+gem "sqlite3-ruby"
+gem "fakefs"
+gem "fakefs-require"
+gem "ruby_parser"
