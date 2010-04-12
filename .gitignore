@@ -1,0 +1,5 @@
+twitter.yml
+twirb.sqlite
+*.log
+.*.swp
+.bundle
